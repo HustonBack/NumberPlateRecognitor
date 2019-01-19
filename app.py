@@ -17,9 +17,28 @@ def home():
     cur.close()
     return json.dumps(result)
 
-@app.route('/add', methods=['POST'])
+@app.route('/entries', methods=['GET'])
+def entries():
+    cur = conn.cursor()
+    cur.execute("SELECT id, in_out, reg_time, customer_id FROM entries")
+    result = []
+    for row in cur:
+        (id, in_out, reg_time, customer_id) = row
+        result.append({'reg_time' : str(reg_time), 'id' : id, 'in_out': in_out, 'customer_id': customer_id})
+    print(json.dumps(result))
+    cur.close()
+    return json.dumps(result)
+
+@app.route('/add/customer', methods=['POST'])
 def add_plate():
     cur = conn.cursor()
     content = request.get_json(force=True)
     cur.execute("INSERT INTO customers (plate, name) VALUES ('" + content['plate'] + "', '" + content['name'] + "')")
+    return 'ok'
+
+@app.route('/add/entry', methods=['POST'])
+def add_entry():
+    cur = conn.cursor()
+    content = request.get_json(force=True)
+    cur.execute("INSERT INTO entries (customer_id, in_out) VALUES ('" + content['customer_id'] + "', '" + content['in_out'] + "')")
     return 'ok'
