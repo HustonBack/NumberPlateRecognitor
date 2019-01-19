@@ -4,3 +4,5 @@
  - Install virtualenv
  - Install MySQL and create database number_plate
  - Run ./setup to prepare environment 
+ - Run 'flask run' to start application
+ 
