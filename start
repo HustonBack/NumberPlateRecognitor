@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo 'source bin/activate'
-
