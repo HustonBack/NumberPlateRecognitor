@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo Hello world!
+virtualenv --python=/usr/bin/python3.7 .
+source bin/activate
+pip install -r requirements.txt
