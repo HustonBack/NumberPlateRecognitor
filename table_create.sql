@@ -1,4 +1,4 @@
-CREATE TABLE customers2
+CREATE TABLE customers
 (
     id MEDIUMINT NOT NULL AUTO_INCREMENT,
     plate CHAR(50) NOT NULL,
