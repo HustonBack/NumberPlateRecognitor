@@ -42,3 +42,9 @@ def add_entry():
     content = request.get_json(force=True)
     cur.execute("INSERT INTO entries (customer_id, in_out) VALUES ('" + content['customer_id'] + "', '" + content['in_out'] + "')")
     return 'ok'
+
+@app.route('/recognize', methods=['POST'])
+def recognize_photo():
+    f = request.files['file']
+    f.save('./%s' % f.filename)
+    return 'file uploaded successfully'
