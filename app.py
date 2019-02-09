@@ -46,5 +46,4 @@ def add_entry():
 @app.route('/recognize', methods=['POST'])
 def recognize_photo():
     f = request.files['file']
-    f.save('./%s' % f.filename)
-    return 'file uploaded successfully'
+    return f.filename
