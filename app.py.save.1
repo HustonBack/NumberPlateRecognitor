@@ -42,3 +42,6 @@ def add_entry():
     content = request.get_json(force=True)
     cur.execute("INSERT INTO entries (customer_id, in_out) VALUES ('" + content['customer_id'] + "', '" + content['in_out'] + "')")
     return 'ok'
+
+if __name == '__main__':
+	
